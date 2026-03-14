@@ -1,3 +1,3 @@
 #Server
 
-##This folder contains backend codes
+This folder contains backend codes
