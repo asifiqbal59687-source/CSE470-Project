@@ -1,3 +1,3 @@
-# Placeholder file for the client directory
+# Client
 
-This directory is for the client application.
+This is a placeholder README file for the client directory.
