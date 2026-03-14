@@ -1,3 +1,3 @@
 #Server
 
-This placeholder contains backend codes
+This is a placeholder README file contains backend codes
