@@ -1,47 +1,33 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import CustomerHistory from './components/CustomerHistory';
 
 function App() {
-  const [dbStatus, setDbStatus] = useState("Checking...");
-
-  useEffect(() => {
-    // This calls the backend through the proxy you set in package.json
-    fetch('/test-db')
-      .then(res => res.json())
-      .then(data => setDbStatus(data.message))
-      .catch(err => setDbStatus("Connection Failed"));
-  }, []);
+  // We start with ID 1 (Arham), but now it's a "state" that can change!
+  const [currentId, setCurrentId] = useState(1);
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>SME360 Integration Test</h1>
-      <p>Database Status: <strong>{dbStatus}</strong></p>
+    <div className="App">
+      <header style={{ backgroundColor: '#282c34', padding: '20px', color: 'white', textAlign: 'center' }}>
+        <h1>SME360 Business Analytics</h1>
+      </header>
+      
+      <main style={{ padding: '20px', textAlign: 'center' }}>
+        <div style={{ marginBottom: '30px', padding: '15px', backgroundColor: '#f9f9f9', borderRadius: '8px' }}>
+          <label style={{ marginRight: '10px', fontWeight: 'bold' }}>View History for Customer ID: </label>
+          <input 
+            type="number" 
+            value={currentId} 
+            onChange={(e) => setCurrentId(e.target.value)}
+            style={{ padding: '8px', width: '60px', borderRadius: '4px', border: '1px solid #ccc' }}
+          />
+          <p style={{ fontSize: '0.8rem', color: '#666' }}>
+            Try switching between 1 (Arham) and 2 (Test Client)
+          </p>
+        </div>
+
+        {/* This component now updates every time currentId changes */}
+        <CustomerHistory customerId={currentId} />
+      </main>
     </div>
   );
 }
