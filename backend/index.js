@@ -1,3 +1,4 @@
+const productRoutes = require('./routes/productRoutes');
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
@@ -9,6 +10,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/api/products', productRoutes);
 
 // Dummy Route to test if Server is alive
 app.get('/', (req, res) => {

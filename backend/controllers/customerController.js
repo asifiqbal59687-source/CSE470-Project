@@ -10,3 +10,19 @@ exports.getCustomerHistory = async (req, res) => {
         res.status(500).json({ error: "Failed to fetch customer history" });
     }
 };
+
+
+
+exports.getAnalytics = async (req, res) => {
+    try {
+        const data = await Customer.getMonthlyAnalytics();
+        res.status(200).json(data);
+    } catch (err) {
+        // This will print the actual MySQL error in your CMD/Terminal
+        console.error("SQL Error Detected:", err); 
+        res.status(500).json({ 
+            error: "Failed to fetch analytics", 
+            sqlMessage: err.sqlMessage // This sends the real error to the browser
+        });
+    }
+};

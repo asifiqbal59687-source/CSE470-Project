@@ -6,3 +6,6 @@ const customerController = require('../controllers/customerController');
 router.get('/:id/history', customerController.getCustomerHistory);
 
 module.exports = router;
+
+
+router.get('/analytics/monthly', customerController.getAnalytics);

@@ -1,6 +1,7 @@
 const db = require('../config/db');
 
 const Customer = {
+    // Feature 1: Customer History (FR-4)
     getPurchaseHistory: async (customerId) => {
         const query = `
             SELECT s.id, s.amount, s.sale_date, c.name as customer_name
@@ -9,6 +10,20 @@ const Customer = {
             WHERE c.id = ?
             ORDER BY s.sale_date DESC`;
         const [rows] = await db.execute(query, [customerId]);
+        return rows;
+    },
+
+    // Feature 2: Monthly Analytics (FR-14) 
+    getMonthlyAnalytics: async () => {
+        const query = `
+            SELECT 
+                DATE_FORMAT(sale_date, '%Y-%m') AS month,
+                SUM(amount) AS total_revenue,
+                SUM(amount - cost) AS total_profit
+            FROM sales
+            GROUP BY month
+            ORDER BY month ASC`;
+        const [rows] = await db.execute(query);
         return rows;
     }
 };
