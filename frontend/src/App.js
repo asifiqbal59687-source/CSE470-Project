@@ -1,89 +1,108 @@
 import React, { useState } from 'react';
-// 1. Ensure all three components are imported correctly
-import CustomerHistory from './components/CustomerHistory';
-import AnalyticsDashboard from './components/AnalyticsDashboard';
+// 1. All five feature components imported
 import StockAlerts from './components/StockAlerts';
+import AnalyticsDashboard from './components/AnalyticsDashboard';
+import CustomerHistory from './components/CustomerHistory';
+import SupplierList from './components/SupplierList';
+import AuditLogs from './components/AuditLogs';
 
 function App() {
-  // State for FR-4 (Customer History)
+  // State for Customer History Deep-Dive
   const [currentId, setCurrentId] = useState(1);
 
   return (
-    <div className="App" style={{ backgroundColor: '#f0f2f5', minHeight: '100vh', paddingBottom: '50px' }}>
-      {/* Header Section */}
+    <div className="App" style={{ backgroundColor: '#f0f2f5', minHeight: '100vh', paddingBottom: '60px' }}>
+      
+      {/* HEADER SECTION */}
       <header style={{ 
         backgroundColor: '#1a1a2e', 
-        padding: '30px', 
+        padding: '40px 20px', 
         color: 'white', 
         textAlign: 'center',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+        boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
       }}>
-        <h1 style={{ margin: 0, fontSize: '2.5rem' }}>SME360 Decision Support System</h1>
-        <p style={{ opacity: 0.8 }}>Real-time Business Intelligence Dashboard</p>
+        <h1 style={{ margin: 0, fontSize: '2.8rem', letterSpacing: '1px' }}>SME360 COMMAND CENTER</h1>
+        <p style={{ opacity: 0.7, marginTop: '10px', fontSize: '1.1rem' }}>
+          Integrated Decision Support System | April 2026
+        </p>
       </header>
       
-      <main style={{ maxWidth: '1100px', margin: '40px auto', padding: '0 20px' }}>
+      <main style={{ maxWidth: '1200px', margin: '40px auto', padding: '0 20px' }}>
         
-        {/* FEATURE 1: FR-9 LOW STOCK ALERTS (Must be at the top!) */}
-        <div style={{ marginBottom: '20px' }}>
+        {/* FR-9: LOW STOCK ALERTS (Critical Priority) */}
+        <section style={{ marginBottom: '30px' }}>
           <StockAlerts />
-        </div>
+        </section>
 
-        {/* FEATURE 2: FR-14 REVENUE & PROFIT VISUALIZATION */}
+        {/* FR-14: REVENUE & PROFIT ANALYTICS (The "Big Picture") */}
         <section style={{ 
           marginBottom: '40px', 
           backgroundColor: 'white', 
           padding: '30px', 
-          borderRadius: '15px',
-          boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+          borderRadius: '20px',
+          boxShadow: '0 10px 25px rgba(0,0,0,0.05)'
         }}>
           <AnalyticsDashboard />
         </section>
 
-        <hr style={{ border: '0', height: '1px', background: '#ddd', margin: '40px 0' }} />
-
-        {/* FEATURE 3: FR-4 CUSTOMER PURCHASE HISTORY */}
-        <section style={{ 
-          backgroundColor: 'white', 
-          padding: '30px', 
-          borderRadius: '15px',
-          boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
+        {/* MIDDLE GRID: MANAGEMENT TOOLS */}
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', 
+          gap: '30px',
+          marginBottom: '40px'
         }}>
-          <h2 style={{ color: '#1a1a2e', marginBottom: '20px' }}>Customer Management</h2>
           
-          <div style={{ 
-            marginBottom: '30px', 
-            padding: '20px', 
-            backgroundColor: '#f9f9f9', 
-            borderRadius: '10px',
-            display: 'inline-block'
+          {/* FR-19: SUPPLIER MANAGEMENT */}
+          <section style={{ 
+            backgroundColor: 'white', 
+            padding: '30px', 
+            borderRadius: '20px',
+            boxShadow: '0 10px 25px rgba(0,0,0,0.05)'
           }}>
-            <label style={{ marginRight: '15px', fontWeight: 'bold' }}>
-              Search Customer ID: 
-            </label>
-            <input 
-              type="number" 
-              value={currentId} 
-              onChange={(e) => setCurrentId(e.target.value)}
-              style={{ 
-                padding: '10px', 
-                width: '80px', 
-                borderRadius: '6px', 
-                border: '2px solid #007bff',
-                textAlign: 'center'
-              }}
-            />
-          </div>
+            <SupplierList />
+          </section>
 
-          <div>
+          {/* FR-4: CUSTOMER DEEP-DIVE */}
+          <section style={{ 
+            backgroundColor: 'white', 
+            padding: '30px', 
+            borderRadius: '20px',
+            boxShadow: '0 10px 25px rgba(0,0,0,0.05)'
+          }}>
+            <h2 style={{ color: '#1a1a2e', marginBottom: '20px', borderBottom: '2px solid #f0f2f5', paddingBottom: '10px' }}>
+              Customer Intelligence
+            </h2>
+            <div style={{ marginBottom: '20px' }}>
+              <label style={{ fontWeight: 'bold', marginRight: '10px' }}>Enter Customer ID:</label>
+              <input 
+                type="number" 
+                value={currentId} 
+                onChange={(e) => setCurrentId(e.target.value)}
+                style={{ 
+                  padding: '10px', 
+                  width: '70px', 
+                  borderRadius: '8px', 
+                  border: '2px solid #007bff',
+                  textAlign: 'center',
+                  fontSize: '1rem'
+                }}
+              />
+            </div>
             <CustomerHistory customerId={currentId} />
-          </div>
+          </section>
+        </div>
+
+        {/* FR-24: AUDIT LOGS (The Safety Net) */}
+        <section style={{ marginTop: '20px' }}>
+          <AuditLogs />
         </section>
 
       </main>
 
-      <footer style={{ textAlign: 'center', marginTop: '50px', color: '#888', fontSize: '0.9rem' }}>
-        <p>© 2026 SME360 Project - CSE370 Feature Development</p>
+      <footer style={{ textAlign: 'center', color: '#6c757d', padding: '40px 0' }}>
+        <p style={{ fontWeight: 'bold' }}>SME360 | BRAC University CSE370 Semester Project</p>
+        
       </footer>
     </div>
   );
