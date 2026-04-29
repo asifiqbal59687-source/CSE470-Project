@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const customerController = require('../controllers/customerController');
 
-// This matches the URL: /api/customers/:id/history
-router.get('/:id/history', customerController.getCustomerHistory);
+
+router.get('/meta/max-id', customerController.getMaxCustomerValue);
+router.get('/:id/history', customerController.getHistory);
+router.get('/analytics/monthly', customerController.getAnalytics);
+router.get('/alerts/low-margins', customerController.getLowMarginAlerts);
 
 module.exports = router;
-
-
-router.get('/analytics/monthly', customerController.getAnalytics);

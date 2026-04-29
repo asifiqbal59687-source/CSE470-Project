@@ -1,7 +1,12 @@
 const db = require('../config/db');
 
 const Customer = {
-    // Feature 1: Customer History (FR-4)
+    
+    getMaxId: async () => {
+        const [rows] = await db.execute('SELECT MAX(id) as maxId FROM customers');
+        return rows[0].maxId || 1;
+    },
+
     getPurchaseHistory: async (customerId) => {
         const query = `
             SELECT s.id, s.amount, s.sale_date, c.name as customer_name
@@ -13,7 +18,6 @@ const Customer = {
         return rows;
     },
 
-    // Feature 2: Monthly Analytics (FR-14) 
     getMonthlyAnalytics: async () => {
         const query = `
             SELECT 
@@ -24,6 +28,19 @@ const Customer = {
             GROUP BY month
             ORDER BY month ASC`;
         const [rows] = await db.execute(query);
+        return rows;
+    },
+
+    getLowMarginSales: async (thresholdPercent) => {
+        const query = `
+            SELECT s.id, s.amount, s.cost, 
+                   ((s.amount - s.cost) / s.amount * 100) AS margin_percentage,
+                   c.name AS customer_name
+            FROM sales s
+            JOIN customers c ON s.customer_id = c.id
+            WHERE ((s.amount - s.cost) / s.amount * 100) < ?
+            ORDER BY margin_percentage ASC`;
+        const [rows] = await db.execute(query, [thresholdPercent]);
         return rows;
     }
 };
