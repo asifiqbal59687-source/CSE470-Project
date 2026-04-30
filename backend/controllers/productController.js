@@ -1,6 +1,6 @@
 const Product = require('../models/productModel');
 
-exports.getAlerts = async (req, res) => {
+exports.getLowStockAlerts = async (req, res) => {
     try {
         const alerts = await Product.getLowStockAlerts();
         res.status(200).json(alerts);
