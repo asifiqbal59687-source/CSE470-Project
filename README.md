@@ -5,7 +5,7 @@ This system is designed to help Small and Medium Enterprises (SMEs) monitor, ana
 
 
 ## Tech Stack
-- MongoDB
+- MySQL
 - Express.js
 - React
 - Node.js
