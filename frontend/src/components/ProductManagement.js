@@ -11,8 +11,14 @@ const ProductManagement = () => {
     const fetchData = async () => {
         const prodRes = await fetch('/api/products');
         const catRes = await fetch('/api/products/categories');
-        if (prodRes.ok) setProducts(await prodRes.json());
-        if (catRes.ok) setCategories(await catRes.json());
+        if (prodRes.ok) {
+            const data = await prodRes.json();
+            setProducts(Array.isArray(data) ? data : []);
+        }
+        if (catRes.ok) {
+            const data = await catRes.json();
+            setCategories(Array.isArray(data) ? data : []);
+        }
     };
 
     const handleUpdate = async (id, cost_price, selling_price, category_id) => {

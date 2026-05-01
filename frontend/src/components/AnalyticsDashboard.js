@@ -11,6 +11,10 @@ const AnalyticsDashboard = () => {
         fetch('/api/customers/analytics/monthly') // We put it under the customers route for now
             .then(res => res.json())
             .then(data => {
+                if (!Array.isArray(data)) {
+                    setChartData({ labels: [], datasets: [] });
+                    return;
+                }
                 setChartData({
                     labels: data.map(row => row.month),
                     datasets: [

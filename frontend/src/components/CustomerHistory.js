@@ -10,7 +10,7 @@ const CustomerHistory = ({ customerId }) => {
         fetch(`/api/customers/${customerId}/history`)
             .then(res => res.json())
             .then(data => {
-                setHistory(data);
+                setHistory(Array.isArray(data) ? data : []);
                 setLoading(false);
             })
             .catch(err => {

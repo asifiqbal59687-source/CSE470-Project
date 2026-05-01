@@ -12,8 +12,12 @@ const ExpenseTracker = () => {
         fetch('/api/expenses/categories')
             .then(res => res.json())
             .then(data => {
-                setCategories(data);
-                if (data.length > 0) setCategoryId(data[0].id);
+                if (Array.isArray(data)) {
+                    setCategories(data);
+                    if (data.length > 0) setCategoryId(data[0].id);
+                } else {
+                    setCategories([]);
+                }
             });
     }, []);
 

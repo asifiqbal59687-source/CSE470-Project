@@ -6,7 +6,7 @@ const LowMarginAlerts = () => {
     useEffect(() => {
         fetch('/api/customers/alerts/low-margins')
             .then(res => res.json())
-            .then(data => setLowMargins(data))
+            .then(data => setLowMargins(Array.isArray(data) ? data : []))
             .catch(err => console.error("Margin Alert Error:", err));
     }, []);
 

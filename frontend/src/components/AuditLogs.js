@@ -6,7 +6,7 @@ const AuditLogs = () => {
     useEffect(() => {
         fetch('/api/audit')
             .then(res => res.json())
-            .then(data => setLogs(data));
+            .then(data => setLogs(Array.isArray(data) ? data : []));
     }, []);
 
     return (

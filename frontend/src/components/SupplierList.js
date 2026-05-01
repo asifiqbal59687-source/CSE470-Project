@@ -6,7 +6,7 @@ const SupplierList = () => {
     useEffect(() => {
         fetch('/api/suppliers')
             .then(res => res.json())
-            .then(data => setSuppliers(data));
+            .then(data => setSuppliers(Array.isArray(data) ? data : []));
     }, []);
 
     return (

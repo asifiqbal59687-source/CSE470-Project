@@ -11,8 +11,12 @@ const SalesEntry = () => {
         fetch('/api/products')
             .then(res => res.json())
             .then(data => {
-                setProducts(data);
-                if(data.length > 0) setProductId(data[0].id);
+                if (Array.isArray(data)) {
+                    setProducts(data);
+                    if(data.length > 0) setProductId(data[0].id);
+                } else {
+                    setProducts([]);
+                }
             })
             .catch(err => console.error(err));
     }, []);

@@ -6,7 +6,10 @@ const ReportingCenter = () => {
     useEffect(() => {
         fetch('/api/analytics')
             .then(res => res.json())
-            .then(d => setData(d))
+            .then(d => {
+                if (d && !d.error) setData(d);
+                else setData(null);
+            })
             .catch(err => console.error("Error fetching analytics", err));
     }, []);
 

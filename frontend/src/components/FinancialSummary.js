@@ -7,11 +7,11 @@ const FinancialSummary = () => {
     useEffect(() => {
         fetch('/api/finance/summary')
             .then(res => res.json())
-            .then(data => setSummary(data));
+            .then(data => setSummary(Array.isArray(data) ? data : []));
 
         fetch('/api/expenses/top-categories')
             .then(res => res.json())
-            .then(data => setTopCategories(data));
+            .then(data => setTopCategories(Array.isArray(data) ? data : []));
     }, []);
 
     return (
