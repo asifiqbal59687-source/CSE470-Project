@@ -7,6 +7,11 @@ import AnalyticsDashboard from './components/AnalyticsDashboard';
 import CustomerHistory from './components/CustomerHistory';
 import SupplierList from './components/SupplierList';
 import AuditLogs from './components/AuditLogs';
+import SalesEntry from './components/SalesEntry';
+import ProductManagement from './components/ProductManagement';
+import ExpenseTracker from './components/ExpenseTracker';
+import FinancialSummary from './components/FinancialSummary';
+import ReportingCenter from './components/ReportingCenter';
 
 function App() {
   // State for Authentication
@@ -90,7 +95,54 @@ function App() {
           <AnalyticsDashboard />
         </section>
 
-        {/* SECTION 3: MANAGEMENT GRID */}
+        {/* SECTION 2: MANAGEMENT GRID */}
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))', 
+          gap: '30px', 
+          marginBottom: '40px' 
+        }}>
+          {/* Sales Entry (Phase 1) */}
+          <section style={{ backgroundColor: 'white', padding: '30px', borderRadius: '15px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+            <SalesEntry />
+          </section>
+
+          {/* Product Management (Phase 1) */}
+          <section style={{ backgroundColor: 'white', padding: '30px', borderRadius: '15px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+            <ProductManagement />
+          </section>
+        </div>
+
+        {/* SECTION 3: FINANCIAL TRACKING (Phase 2) */}
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))', 
+          gap: '30px', 
+          marginBottom: '40px' 
+        }}>
+          {/* Expense Tracker */}
+          <section style={{ backgroundColor: 'white', padding: '30px', borderRadius: '15px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+            <ExpenseTracker />
+          </section>
+
+          {/* Financial Summary */}
+          <section style={{ backgroundColor: 'white', padding: '30px', borderRadius: '15px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+            <FinancialSummary />
+          </section>
+        </div>
+
+        {/* SECTION 4: ADVANCED ANALYTICS & REPORTING (Phase 3) */}
+        <section style={{ 
+          marginBottom: '40px', 
+          backgroundColor: 'white', 
+          padding: '30px', 
+          borderRadius: '15px',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
+        }}>
+          <ReportingCenter />
+        </section>
+
+        {/* SECTION 5: MANAGEMENT GRID 2 */}
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(550px, 1fr))', 

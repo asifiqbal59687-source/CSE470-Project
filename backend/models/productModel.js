@@ -17,6 +17,30 @@ const Product = {
         `;
         const [rows] = await db.execute(query); 
         return rows;
+    },
+
+    updateProductInfo: async (id, cost_price, selling_price, category_id) => {
+        const query = `
+            UPDATE products 
+            SET cost_price = ?, selling_price = ?, category_id = ?
+            WHERE id = ?
+        `;
+        await db.execute(query, [cost_price, selling_price, category_id, id]);
+    },
+
+    getCategories: async () => {
+        const [rows] = await db.execute('SELECT * FROM product_categories');
+        return rows;
+    },
+    
+    getAllProducts: async () => {
+        const query = `
+            SELECT p.*, c.name as category_name 
+            FROM products p
+            LEFT JOIN product_categories c ON p.category_id = c.id
+        `;
+        const [rows] = await db.execute(query);
+        return rows;
     }
 };
 

@@ -9,6 +9,11 @@ const customerRoutes = require('./routes/customerRoutes'); // History, Analytics
 const supplierRoutes = require('./routes/supplierRoutes'); // Supplier Management
 const productRoutes = require('./routes/productRoutes');   // Stock Alerts
 const auditRoutes = require('./routes/auditRoutes');     // Audit Logs
+const salesRoutes = require('./routes/salesRoutes');     // Sales & Revenue
+const expenseRoutes = require('./routes/expenseRoutes'); // Expenses
+const financeRoutes = require('./routes/financeRoutes'); // Finance Summary
+const analyticsRoutes = require('./routes/analyticsRoutes'); // Advanced Analytics
+const reportRoutes = require('./routes/reportRoutes');   // Exports
 
 const app = express();
 
@@ -33,6 +38,17 @@ app.use('/api/products', productRoutes);
 
 // Audit & Security (FR-24)
 app.use('/api/audit', auditRoutes);
+
+// Sales Transactions & Revenue
+app.use('/api/sales', salesRoutes);
+
+// Expenses & Finance
+app.use('/api/expenses', expenseRoutes);
+app.use('/api/finance', financeRoutes);
+
+// Analytics & Reporting
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/reports', reportRoutes);
 
 // --- 4. HEALTH CHECK & ERROR HANDLING ---
 app.get('/', (req, res) => {
