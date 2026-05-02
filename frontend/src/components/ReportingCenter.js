@@ -31,9 +31,9 @@ const ReportingCenter = () => {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginTop: '20px' }}>
-                <MetricCard title="Gross Profit" value={`$${metrics.grossProfit.toFixed(2)}`} />
-                <MetricCard title="Net Profit" value={`$${metrics.netProfit.toFixed(2)}`} color={metrics.netProfit >= 0 ? 'green' : 'red'} />
-                <MetricCard title="Break-Even Revenue" value={`$${metrics.breakEvenRevenue.toFixed(2)}`} />
+                <MetricCard title="Gross Profit" value={`$${parseFloat(metrics.grossProfit || 0).toFixed(2)}`} />
+                <MetricCard title="Net Profit" value={`$${parseFloat(metrics.netProfit || 0).toFixed(2)}`} color={metrics.netProfit >= 0 ? 'green' : 'red'} />
+                <MetricCard title="Break-Even Revenue" value={`$${parseFloat(metrics.breakEvenRevenue || 0).toFixed(2)}`} />
             </div>
 
             <h4 style={{ marginTop: '30px' }}>📉 Sales Trends</h4>
@@ -50,8 +50,8 @@ const ReportingCenter = () => {
                     {trends.map(t => (
                         <tr key={t.month} style={{ borderBottom: '1px solid #eee' }}>
                             <td style={{ padding: '8px' }}>{t.month}</td>
-                            <td style={{ padding: '8px' }}>${t.revenue.toFixed(2)}</td>
-                            <td style={{ padding: '8px', color: t.isDeclining ? 'red' : 'green' }}>{t.growthRate.toFixed(2)}%</td>
+                            <td style={{ padding: '8px' }}>${parseFloat(t.revenue || 0).toFixed(2)}</td>
+                            <td style={{ padding: '8px', color: t.isDeclining ? 'red' : 'green' }}>{parseFloat(t.growthRate || 0).toFixed(2)}%</td>
                             <td style={{ padding: '8px' }}>{t.isDeclining ? '⚠️ Declining' : '✅ Growing'}</td>
                         </tr>
                     ))}

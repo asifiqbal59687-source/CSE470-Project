@@ -30,10 +30,10 @@ const FinancialSummary = () => {
                     {summary.map(s => (
                         <tr key={s.month} style={{ borderBottom: '1px solid #eee' }}>
                             <td style={{ padding: '10px' }}>{s.month}</td>
-                            <td style={{ padding: '10px', color: 'green' }}>${s.revenue.toFixed(2)}</td>
-                            <td style={{ padding: '10px', color: 'red' }}>${s.expenses.toFixed(2)}</td>
+                            <td style={{ padding: '10px', color: 'green' }}>${parseFloat(s.revenue || 0).toFixed(2)}</td>
+                            <td style={{ padding: '10px', color: 'red' }}>${parseFloat(s.expenses || 0).toFixed(2)}</td>
                             <td style={{ padding: '10px', fontWeight: 'bold', color: s.net >= 0 ? 'green' : 'red' }}>
-                                ${s.net.toFixed(2)}
+                                ${parseFloat(s.net || 0).toFixed(2)}
                             </td>
                         </tr>
                     ))}

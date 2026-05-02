@@ -205,7 +205,7 @@ function App() {
       </main>
 
       <footer style={{ textAlign: 'center', color: '#adb5bd', padding: '40px 0', borderTop: '1px solid #dee2e6', margin: '0 40px' }}>
-        <p style={{ margin: 0, fontWeight: 'bold' }}>SME360 | BRAC UNIVERSITY CSE370</p>
+        <p style={{ margin: 0, fontWeight: 'bold' }}>SME360 | BUSINESS ANALYTICS</p>
         <p style={{ margin: '5px 0 0 0', fontSize: '0.8rem' }}>Automated Decision Support System • Stable Build v1.0</p>
       </footer>
     </div>
