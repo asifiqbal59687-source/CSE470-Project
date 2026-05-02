@@ -1,0 +1,107 @@
+[
+  {
+    "feature": "Analytics Dashboard Data",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Audit Logs",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Auth Register",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Auth Login",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Customer Max ID",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Customer History",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Customer Analytics",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Customer Low Margins",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Expense Categories",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Expense Monthly",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Expense Top Categories",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Finance Summary",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Product Low Stock Alerts",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Products All",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Product Categories",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Report Export CSV",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Sales Revenue",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Suppliers All",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Expense Create",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Sales Create",
+    "passed": true,
+    "error": null
+  },
+  {
+    "feature": "Product Update",
+    "passed": true,
+    "error": null
+  }
+]

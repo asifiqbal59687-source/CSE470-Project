@@ -63,9 +63,12 @@ app.use((err, req, res, next) => {
 
 // --- 5. START SERVER ---
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`-----------------------------------------`);
-    console.log(`🚀 SME360 SERVER RUNNING ON PORT: ${PORT}`);
-    console.log(`✅ ALL 6 FEATURES CONNECTED`);
-    console.log(`-----------------------------------------`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`-----------------------------------------`);
+        console.log(`🚀 SME360 SERVER RUNNING ON PORT: ${PORT}`);
+        console.log(`✅ ALL 6 FEATURES CONNECTED`);
+        console.log(`-----------------------------------------`);
+    });
+}
+module.exports = app;
