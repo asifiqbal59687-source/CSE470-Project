@@ -30,6 +30,7 @@ const SalesEntry = () => {
                     cost: totalCost, 
                     customer_id: customerId, 
                     product_id: productId, 
+                    product_name: productName,
                     quantity, 
                     price: parseFloat(price) 
                 })

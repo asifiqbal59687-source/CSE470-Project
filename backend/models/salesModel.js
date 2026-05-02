@@ -1,7 +1,24 @@
 const db = require('../config/db');
 
 const Sales = {
-    recordSale: async (amount, cost, customerId, productId, quantity, price) => {
+    recordSale: async (amount, cost, customerId, productId, quantity, price, productName) => {
+        try {
+            if (productName && productId) {
+                await db.execute(
+                    'INSERT IGNORE INTO products (id, product_name, cost_price, selling_price, category_id, stock_quantity, min_threshold) VALUES (?, ?, ?, ?, 1, 100, 10)',
+                    [productId, productName, cost/quantity, price]
+                );
+            }
+            if (customerId) {
+                await db.execute(
+                    'INSERT IGNORE INTO customers (id, name, email, phone) VALUES (?, ?, ?, ?)',
+                    [customerId, 'Customer ' + customerId, 'customer' + customerId + '@test.com', '0000000000']
+                );
+            }
+        } catch (e) {
+            console.error("Ignored entity creation error:", e);
+        }
+
         const query = `
             INSERT INTO sales (amount, cost, customer_id, product_id, quantity, price)
             VALUES (?, ?, ?, ?, ?, ?)
