@@ -11,8 +11,8 @@ const Sales = {
             }
             if (customerId) {
                 await db.execute(
-                    'INSERT IGNORE INTO customers (id, name, email, phone) VALUES (?, ?, ?, ?)',
-                    [customerId, 'Customer ' + customerId, 'customer' + customerId + '@test.com', '0000000000']
+                    'INSERT IGNORE INTO customers (id, name) VALUES (?, ?)',
+                    [customerId, 'Customer ' + customerId]
                 );
             }
         } catch (e) {

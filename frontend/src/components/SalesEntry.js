@@ -1,14 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SalesEntry = () => {
-    const generateId = () => Math.floor(Math.random() * 900000) + 100000;
-    const [productId, setProductId] = useState(generateId());
+    const [productId, setProductId] = useState('');
     const [productName, setProductName] = useState('');
     const [price, setPrice] = useState('');
     const [cost, setCost] = useState('');
     const [customerId, setCustomerId] = useState(1);
     const [quantity, setQuantity] = useState(1);
     const [message, setMessage] = useState('');
+
+    // Logically determine the next Product ID based on database
+    useEffect(() => {
+        fetch('/api/products')
+            .then(res => res.json())
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    const maxId = Math.max(...data.map(p => p.id));
+                    setProductId(maxId + 1);
+                } else {
+                    setProductId(1);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                setProductId(1); // Fallback
+            });
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,7 +56,7 @@ const SalesEntry = () => {
                 setMessage('Sale recorded successfully!');
                 setQuantity(1);
                 setProductName('');
-                setProductId(generateId());
+                setProductId(prev => prev + 1); // Logically increment for the next entry
                 setPrice('');
                 setCost('');
                 setTimeout(() => setMessage(''), 3000);
