@@ -14,6 +14,11 @@ exports.updateProductInfo = async (req, res) => {
     try {
         const { id } = req.params;
         const { cost_price, selling_price, category_id } = req.body;
+
+        if (cost_price === undefined || selling_price === undefined || category_id === undefined) {
+            return res.status(400).json({ error: "cost_price, selling_price, and category_id are required fields" });
+        }
+
         await Product.updateProductInfo(id, cost_price, selling_price, category_id);
         res.status(200).json({ message: "Product updated successfully" });
     } catch (err) {
